@@ -1,6 +1,6 @@
 <p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
+  <strong>User:</strong>
+  <%= @blog.user.name %>
 </p>
 
 <p>
@@ -8,10 +8,7 @@
   <%= @blog.content %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @blog.user_id %>
-</p>
+
 <% if @blog.user == current_user %>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <% end %>
