@@ -1,4 +1,4 @@
 class Feed < ApplicationRecord
-  mount_uploder :image, ImageUploader
+  mount_uploader :image, ImageUploader
   belongs_to :blog
 end
