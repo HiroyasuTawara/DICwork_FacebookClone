@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :ensure_user, only: %i[edit update destroy ]
+  before_action :ensure_user, only: %i[ edit update destroy ]
 
   def index
     @blogs = Blog.all
@@ -18,6 +18,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = current_user.blogs.build(blog_params)
+    return render :new if params[:back]
     if @blog.save
       redirect_to blog_url(@blog), notice: "ブログを投稿しました"
     else
@@ -50,10 +51,6 @@ class BlogsController < ApplicationController
     @blog = @blogs.find_by(id: params[:id])
   end
 
-  def set_blog
-    @blog = Blog.find(params[:id])
-  end
-  
   def blog_params
     params.require(:blog).permit(:title, :content, :user_id)
   end
