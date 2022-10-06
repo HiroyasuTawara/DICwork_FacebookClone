@@ -17,17 +17,23 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
     if @blog.save
-      redirect_to blog_url(@blog), notice: "Blog was successfully created."
+      redirect_to blog_url(@blog), notice: "ブログを投稿しました"
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+  def confirm
+    @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id 
+    render :new if @blog.invalid?
+  end
 
   def update
     if @blog.update(blog_params)
-      redirect_to blog_url(@blog), notice: "Blog was successfully updated." 
+      redirect_to blog_url(@blog), notice: "ブログを更新しました" 
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +41,7 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    redirect_to blogs_url, notice: "Blog was successfully destroyed." 
+    redirect_to blogs_url, notice: "ブログを削除しました" 
   end
 
   private
