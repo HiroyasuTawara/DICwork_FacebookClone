@@ -2,10 +2,13 @@
 <%= form_with(model: @blog, local:true) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
+  <%= form.hidden_field :image %>
+  <%= form.hidden_field :image_cache %>
 
 
   <div class="field">
   <p>本文:<%= @blog.content %></p>
+  <p>Image:<%= image_tag @blog.image.url %></p>
   </div>
 
 <div class="actions">

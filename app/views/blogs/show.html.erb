@@ -8,6 +8,13 @@
   <%= @blog.content %>
 </p>
 
+<%  if @blog.image.file != nil %>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @blog.image.url %>
+</p>
+<% end %>
+
 
 <% if @blog.user == current_user %>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
