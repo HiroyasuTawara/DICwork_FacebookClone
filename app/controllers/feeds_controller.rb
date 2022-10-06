@@ -43,6 +43,6 @@ class FeedsController < ApplicationController
     end
 
     def feed_params
-      params.require(:feed).permit(:image, :blog_id)
+      params.require(:feed).permit(:image, :image_cache, :blog_id)
     end
 end
