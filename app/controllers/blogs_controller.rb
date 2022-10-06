@@ -1,5 +1,8 @@
 class BlogsController < ApplicationController
+  include SessionsHelper
+  skip_before_action :login_required, only:[:index, :show]
   before_action :ensure_user, only: %i[ edit update destroy ]
+  
 
   def index
     @blogs = Blog.all

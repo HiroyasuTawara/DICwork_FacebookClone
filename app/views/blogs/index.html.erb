@@ -18,7 +18,7 @@
         <td><%= link_to 'Show', blog %></td>
         <% if blog.user == current_user %>
           <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-          <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: '本当に削除してもよろしいですか?' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -27,4 +27,6 @@
 
 <br>
 
+<% if logged_in? %>
 <%= link_to 'New Blog', new_blog_path %>
+<% end %>
