@@ -8,7 +8,9 @@
 
   <div class="field">
   <p>本文:<%= @blog.content %></p>
-  <p>Image:<%= image_tag @blog.image.url %></p>
+  <% if @blog.image.file != nil %>
+    <p>Image:<%= image_tag @blog.image.url %></p>
+  <% end %>
   </div>
 
 <div class="actions">
